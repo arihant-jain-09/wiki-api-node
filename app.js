@@ -9,7 +9,7 @@ app.listen(port,function () {
  console.log("Server is running at port 3000");
 });
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/wikiDB",{ useNewUrlParser: true , useUnifiedTopology: true});
+mongoose.connect("mongodb+srv://arihant-09:Test-123@cluster0.vkqhs.mongodb.net/wikiDB?retryWrites=true&w=majority",{ useNewUrlParser: true , useUnifiedTopology: true});
 const articleSchema=new mongoose.Schema({
   title:String,
   content:String
@@ -29,6 +29,7 @@ app.route('/articles')
       title:req.body.title,
       content:req.body.content
     })
+
     article.save((err)=>{
       if(err){res.send(err)}
       else{res.send('successfully added a new article')}
